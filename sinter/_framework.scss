@@ -109,3 +109,27 @@ $sinter-gutter-width: 20px !default;
     img::-moz-selection { background: transparent; }
     body { -webkit-tap-highlight-color: $color; }
 }
+
+// beta
+
+@mixin borderbox($columns, $padding: 0, $border-width: 0) {
+    @include columns($columns);
+    border-width: $border-width;
+    border-color: #000;
+    border-style: solid;
+    padding: $padding;
+    width: column-width($columns) - $padding * 2 - $border-width * 2;
+}
+
+@mixin empty-left($columns) {
+    margin-left: column-width($columns) + $sinter-gutter-width;
+}
+
+@mixin empty-right($columns) {
+    margin-right: column-width($columns) + $sinter-gutter-width;
+}
+
+@mixin empty($columns) {
+    @include empty-left($columns);
+    @include empty-right($columns);
+}
